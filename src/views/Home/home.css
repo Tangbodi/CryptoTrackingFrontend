@@ -1,0 +1,13 @@
+.navbar-brand {
+    color: rgb(157, 157, 157);
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 50px;
+  }
+  .crypto-header-right {
+    display: flex;
+    position: absolute; 
+    right: 0; 
+    top: 0; 
+    margin-right: 16px; 
+  }

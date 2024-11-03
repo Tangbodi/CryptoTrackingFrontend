@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import './login.css'
-const Login = () => {
+const LoginOrRegister = () => {
     const [user, setUser] = useState(null);
     const navigate = useNavigate(); 
 
@@ -23,7 +23,10 @@ const Login = () => {
         try {
             const result = await signInWithPopup(auth, googleProvider);
             setUser(result.user);
-            console.log(result.user.uid)
+            const user = result.user;
+            setUser(user);
+            const avatarUrl = 'https://fastly.picsum.photos/id/726/200/200.jpg?hmac=W7sB7Apj0ousj_seKHvFyR4r0Hw0RGFP86_KqHSqe0s';
+            sessionStorage.setItem('crypto-avatarurl', avatarUrl);
             navigate('/home');
         } catch (error) {
             console.error("Error logging in:", error);
@@ -46,7 +49,6 @@ const Login = () => {
                             </svg>
                         </div>
                         <span className="gsi-material-button-contents">Sign in with Google</span>
-                        <span style={{ display: 'none' }}>Sign in with Google</span>
                     </div>
                 </button>
             </div>
@@ -54,5 +56,5 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default LoginOrRegister;
 
