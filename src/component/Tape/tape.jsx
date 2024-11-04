@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-const Tap = () => {
+const Tape = () => {
     
     const containerRef = useRef(null);
 
@@ -54,5 +54,5 @@ const Tap = () => {
       </div>
     );
   };
-  export default Tap;
+  export default Tape;
 
