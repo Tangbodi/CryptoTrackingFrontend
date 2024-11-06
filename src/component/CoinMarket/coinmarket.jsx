@@ -5,7 +5,7 @@ import Chart from '../Chart/chart';
 import './coinmarket.css';
 import Wallet from '../Wallet/wallet';
 import PlaceOrder from '../PlaceOrder/placeOrder';
-const data = [
+const walletData = [
   {
     symbol: "BTC",
     quantity: 0.5,
@@ -71,6 +71,8 @@ function CoinMarketCap() {
   const [cryptoData, setCryptoData] = useState([]);
   const [error, setError] = useState(null);
   const [selectedSymbol, setSelectedSymbol] = useState(null);
+  const [selectedWalletSymbol, setSelectedWalletSymbol] = useState(null);
+
   useEffect(() => {
     const fetchCryptoData = async () => {
       const cachedData = localStorage.getItem('cryptoData');
@@ -106,8 +108,11 @@ function CoinMarketCap() {
   }, []);
 
   const handleClick = (symbol) => {
-    setSelectedSymbol(symbol);  // Update the selectedSymbol state
-    console.log(symbol + ' coin');  // Logging for debugging
+    setSelectedSymbol(symbol); 
+  };
+  
+  const handleClickonWallet = (symbol) => {
+    setSelectedWalletSymbol(symbol); 
   };
 
   return (
@@ -122,12 +127,12 @@ function CoinMarketCap() {
       </div>
       <div className='home-chart'>
         <Chart symbol={selectedSymbol} />
-        <div className='home-wallet-checkout'>
+        <div className='home-wallet-placeorder'>
         <div className='home-wallet'>
-        <Wallet data={data} />
+        <Wallet data={walletData} onSymbolClick={handleClickonWallet}/>
         </div>
-        <div className='home-checkout'>
-        <PlaceOrder data={data} />
+        <div className='home-placeorder'>
+        {selectedWalletSymbol && <PlaceOrder symbol={selectedWalletSymbol} />}
         </div>
         </div>
       </div>

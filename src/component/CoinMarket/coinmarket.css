@@ -10,12 +10,12 @@
 .home-chart{
     flex:1;
 }
-.home-wallet-checkout{
+.home-wallet-placeorder{
     display:flex;
 }
 .home-wallet{
     width: 70%
 }
-.home-checkout{
+.home-placeorder{
     width: 30%
 }

@@ -4,7 +4,7 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import { formatCurrency, formatMarketCap, formatVolume, formatSupply } from '../../utils/formatters';
 
-const CryptoGrid = ({ cryptoData, onSymbolClick }) => {
+const CryptoGrid = ({ cryptoData }) => {
 
     const columnDefs = [
         {
@@ -52,7 +52,7 @@ const CryptoGrid = ({ cryptoData, onSymbolClick }) => {
     const handleCellClick = (params) => {
         if (params.colDef.field === "name") {
             const symbol = params.data.symbol;
-            onSymbolClick(symbol)
+       
             console.log(symbol+'cryp');
        
         }

@@ -5,7 +5,7 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 
 
 
-const Wallet = ({ data }) => {
+const Wallet = ({ data, onSymbolClick }) => {
     const columnDefs = [
         {
             headerName: "Name",
@@ -23,13 +23,20 @@ const Wallet = ({ data }) => {
             flex: 1,
         }
     ];
-
+    const handleCellClick = (params) => {
+          if (params.colDef.field === "symbol") {
+            const symbol = params.data.symbol;
+            onSymbolClick(symbol)
+            console.log(symbol+'wallet');
+        }
+    };
     return (
         <div style={{ width: "100%", height: "100%" }} className="ag-theme-alpine-dark">
             <AgGridReact
                 rowData={data}
                 columnDefs={columnDefs}
                 domLayout='autoHeight'
+                onCellClicked={handleCellClick}
             />
         </div>
 
