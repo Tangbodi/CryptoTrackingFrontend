@@ -3,16 +3,9 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import { formatCurrency, formatMarketCap, formatVolume, formatSupply } from '../../utils/formatters';
-import { useNavigate  } from 'react-router-dom';
-
-
-const CustomButtonComponent = (props) => {
-
-    return <button onClick={() => window.alert("clicked")}>Trade</button>;
-};
 
 const CryptoGrid = ({ cryptoData, onSymbolClick }) => {
-    const navigate = useNavigate();
+
     const columnDefs = [
         {
             headerName: "Name",
@@ -52,15 +45,16 @@ const CryptoGrid = ({ cryptoData, onSymbolClick }) => {
                 return formatSupply(supply);
             }
         },
-        { field: "Trade", cellRenderer: CustomButtonComponent, flex: 1 },
+      
 
     ];
 
     const handleCellClick = (params) => {
         if (params.colDef.field === "name") {
             const symbol = params.data.symbol;
-            console.log(symbol);
-            navigate(`/diagram/${symbol}`);
+            onSymbolClick(symbol)
+            console.log(symbol+'cryp');
+       
         }
     };
 
@@ -73,6 +67,7 @@ const CryptoGrid = ({ cryptoData, onSymbolClick }) => {
                 onCellClicked={handleCellClick}
             />
         </div>
+
     );
 };
 

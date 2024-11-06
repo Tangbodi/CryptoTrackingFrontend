@@ -1,0 +1,12 @@
+.home{
+    display: flex;
+    justify-content:space-between
+}
+.home-cryptoGrid{
+    flex:1;
+    width: 50%;
+   
+}
+.home-chart{
+    flex:1;
+}

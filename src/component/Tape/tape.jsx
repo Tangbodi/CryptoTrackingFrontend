@@ -22,7 +22,19 @@ const Tape = () => {
           {
             proName: 'BITSTAMP:ETHUSD',
             title: 'Ethereum'
-          }
+          },
+          {
+            proName: 'BITSTAMP:USDTUSD',
+            title: 'Tether'
+          },
+          {
+            proName: 'CRYPTO:BNBUSD',
+            title: 'Binance Coin (BNB USD) Price'
+          },
+          {
+            proName: 'BITSTAMP:USDCUSD',
+            title: 'USDC'
+          },
         ],
         showSymbolLogo: true,
         isTransparent: false,

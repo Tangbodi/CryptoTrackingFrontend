@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
-import { useParams } from 'react-router-dom';
 
-const Chart = () => {
-  const { symbol } = useParams();
+const Chart = ({symbol}) => {
   const container = useRef();
 
   useEffect(() => {
@@ -17,7 +15,7 @@ const Chart = () => {
           [currentSymbol]
         ],
         chartOnly: false,
-        width: '50%',
+        width: '100%',
         locale: 'en',
         colorTheme: 'dark',
         autosize: true,
