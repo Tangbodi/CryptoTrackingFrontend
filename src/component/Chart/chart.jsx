@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 
 const Chart = ({symbol}) => {
   const container = useRef();
-
   useEffect(() => {
     const loadChart = (currentSymbol) => {
       const script = document.createElement('script');

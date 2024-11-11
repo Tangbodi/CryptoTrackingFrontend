@@ -70,7 +70,7 @@ const walletData = [
 function CoinMarketCap() {
   const [cryptoData, setCryptoData] = useState([]);
   const [error, setError] = useState(null);
-  const [selectedSymbol, setSelectedSymbol] = useState(null);
+  const [selectedSymbol, setSelectedSymbol] = useState("ETH");
   const [selectedWalletSymbol, setSelectedWalletSymbol] = useState(null);
 
   useEffect(() => {
@@ -110,33 +110,17 @@ function CoinMarketCap() {
   const handleClick = (symbol) => {
     setSelectedSymbol(symbol); 
   };
-  
-  const handleClickonWallet = (symbol) => {
-    setSelectedWalletSymbol(symbol); 
-  };
+
 
   return (
-    <div className='home'>
-      <div className='home-coinmarket'>
+    <div>
         {error && <p>Error fetching data: {error.message}</p>}
         {cryptoData.length > 0 ? (
           <CryptoGrid cryptoData={cryptoData} onSymbolClick={handleClick} />
         ) : (
           <p>Loading data...</p>
         )}
-      </div>
-      <div className='home-chart'>
-        <Chart symbol={selectedSymbol} />
-        <div className='home-wallet-placeorder'>
-        <div className='home-wallet'>
-        <Wallet data={walletData} onSymbolClick={handleClickonWallet}/>
-        </div>
-        <div className='home-placeorder'>
-        {selectedWalletSymbol && <PlaceOrder symbol={selectedWalletSymbol} />}
-        </div>
-        </div>
-      </div>
-    </div>
+     </div>
   );
 }
 

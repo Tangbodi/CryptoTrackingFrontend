@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import { formatCurrency, formatMarketCap, formatVolume, formatSupply } from '../../utils/formatters';
-
+import Chart from '../Chart/chart';
+import './cryptogrid.css';
 const CryptoGrid = ({ cryptoData }) => {
+
+    const [selectedSymbol, setSelectedSymbol] = useState("ETH");
 
     const columnDefs = [
         {
@@ -45,20 +48,21 @@ const CryptoGrid = ({ cryptoData }) => {
                 return formatSupply(supply);
             }
         },
-      
+
 
     ];
 
     const handleCellClick = (params) => {
         if (params.colDef.field === "name") {
             const symbol = params.data.symbol;
-       
-            console.log(symbol+'cryp');
-       
+            setSelectedSymbol(symbol)
+            console.log(symbol + 'cryp');
         }
     };
 
     return (
+        <div className='home'>
+        <div className='home-coinmarket'>
         <div style={{ width: "100%", height: "100%" }} className="ag-theme-alpine-dark">
             <AgGridReact
                 rowData={cryptoData}
@@ -67,7 +71,11 @@ const CryptoGrid = ({ cryptoData }) => {
                 onCellClicked={handleCellClick}
             />
         </div>
-
+        </div>
+        <div className='home-chart'>
+                <Chart symbol={selectedSymbol} />
+            </div>
+        </div>
     );
 };
 

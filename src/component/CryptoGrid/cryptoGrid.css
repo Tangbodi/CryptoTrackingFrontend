@@ -2,11 +2,20 @@
     display: flex;
     justify-content:space-between
 }
-.home-cryptoGrid{
+.home-coinmarket{
     flex:1;
     width: 50%;
    
 }
 .home-chart{
     flex:1;
+}
+.home-wallet-placeorder{
+    display:flex;
+}
+.home-wallet{
+    width: 70%
+}
+.home-placeorder{
+    width: 30%
 }
