@@ -11,3 +11,21 @@
     top: 0; 
     margin-right: 16px; 
   }
+
+.crypto-header {
+  background-color: (34, 34, 34);
+  background-image: linear-gradient(rgb(60, 60, 60) 0px, rgb(34, 34, 34) 100%);
+  /* border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px; */
+  border-bottom-style: solid;
+  border-bottom-width: 0.8px;
+  border-left-style: solid;
+  border-left-width: 0.8px;
+  border-right-style: solid;
+  border-right-width: 0.8px;
+  /* border-top-left-radius: 4px;
+  border-top-right-radius: 4px; */
+  border-top-style: solid;
+  border-top-width: 0.8px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}

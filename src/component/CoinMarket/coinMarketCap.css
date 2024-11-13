@@ -2,12 +2,12 @@
     display: flex;
     justify-content:space-between
 }
-.home-coinmarket{
+.coinmarket{
     flex:1;
     width: 50%;
    
 }
-.home-chart{
+.chart{
     flex:1;
 }
 .home-wallet-placeorder{

@@ -15,6 +15,7 @@ const Chart = ({symbol}) => {
         ],
         chartOnly: false,
         width: '100%',
+        height: '78%',
         locale: 'en',
         colorTheme: 'dark',
         autosize: true,

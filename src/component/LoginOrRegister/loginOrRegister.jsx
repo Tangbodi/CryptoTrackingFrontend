@@ -7,26 +7,19 @@ const LoginOrRegister = () => {
     const [user, setUser] = useState(null);
     const navigate = useNavigate(); 
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            if (currentUser) {
-                setUser(currentUser);
-                navigate('/home');
-            } else {
-                setUser(null); 
-            }
-        });
-        return () => unsubscribe();
-    }, [navigate]);
 
     const handleLogin = async () => {
         try {
             const result = await signInWithPopup(auth, googleProvider);
-            setUser(result.user);
             const user = result.user;
-            setUser(user);
+            // const avatarUrl = user.photoURL;
             const avatarUrl = 'https://fastly.picsum.photos/id/726/200/200.jpg?hmac=W7sB7Apj0ousj_seKHvFyR4r0Hw0RGFP86_KqHSqe0s';
-            sessionStorage.setItem('crypto-avatarurl', avatarUrl);
+            sessionStorage.setItem('crypto-avatarurl',avatarUrl);
+            // console.log(user.avatarUrl)
+            // console.log(user.photoURL)
+            // console.log(user.displayName)
+            sessionStorage.setItem('user-id',user.uid)
+            sessionStorage.setItem('user-name',user.displayName)
             navigate('/home');
         } catch (error) {
             console.error("Error logging in:", error);

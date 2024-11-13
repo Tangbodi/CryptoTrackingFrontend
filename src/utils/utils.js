@@ -25,6 +25,8 @@ export function formatSupply(value) {
     return formatLargeNumber(value); 
 }
 
-
-
-  
+export const removeSessionStorage = () =>{
+    sessionStorage.removeItem('crypto-avatarurl');
+    sessionStorage.removeItem('user-id');
+    sessionStorage.removeItem('user-name');
+}

@@ -1,4 +1,4 @@
-import CoinMarketCap from "../../component/CoinMarket/coinmarket";
+import CoinMarketCap from "../../component/CoinMarket/coinMarketCap";
 function CoinMarket(){
 
     return(

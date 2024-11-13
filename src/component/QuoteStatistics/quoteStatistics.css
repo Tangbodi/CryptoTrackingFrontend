@@ -1,0 +1,41 @@
+.quote-statistics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    padding: 20px;
+    background-color:  #131722;
+    max-width: 100%;
+    margin: auto;
+    border-radius: 3px;
+  }
+  
+  .quote-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    color: white;
+    border-bottom: 1px dashed #e0e0e0;
+  }
+  
+  .quote-label {
+    color: white;
+    font-weight: bold;
+  }
+  
+  .quote-value {
+    color: white;
+   
+  }
+  
+  @media (max-width: 768px) {
+    .quote-statistics {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .quote-statistics {
+      grid-template-columns: 1fr; /* Single column for mobile */
+    }
+  }
+  
