@@ -1,5 +1,66 @@
-.placeorder{
-    background-color:  rgb(24, 29, 31)
-    /* rgb(24, 29, 31) */
-    
+.popup-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(54, 51, 51);
+    padding: 40px;
+    border-radius: 8px;
+    color: white;
+}
+
+.popup-content {
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    text-align: center;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;  
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    width: 100px;  
+    margin-right: 10px; 
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.form-group button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #45a049;
+}
+
+.form-group span {
+    display: inline-block;
+    padding: 8px;
+    font-weight: bold;
+}
+
+.form-group button:last-of-type {
+    background-color: #f44336;
+}
+
+.form-group button:last-of-type:hover {
+    background-color: #e53935;
 }

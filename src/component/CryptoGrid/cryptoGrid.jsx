@@ -5,7 +5,7 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 import { formatCurrency, formatMarketCap, formatVolume, formatSupply } from '../../utils/utils';
 import Chart from '../Chart/chart';
 import Wallet from '../Wallet/wallet';
-import Popup from '../Popup/popup';
+import PlaceOrder from '../PlaceOrder/placeOrder';
 import QuoteStatistics from '../QuoteStatistics/quoteStatistics';
 const CryptoGrid = ({ cryptoData }) => {
     const paginationPageSizeSelector = [20];
@@ -112,7 +112,7 @@ const CryptoGrid = ({ cryptoData }) => {
                 <Chart symbol={selectedSymbol} />
                 <QuoteStatistics index={index} />
             </div>
-            {showPopup && <Popup symbol={selectedSymbol} onClose={closePopup} />}
+            {showPopup && <PlaceOrder symbol={selectedSymbol} onClose={closePopup} />}
         </div>
     );
 };
