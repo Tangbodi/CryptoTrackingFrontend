@@ -13,13 +13,20 @@ import axios from 'axios';
  * @param params userId
  * @returns
  */
-
 export const getUserInfoAPI = (params) => {
     return  axios.get(`/api/v1/users/info/${params}`);
 };
+
 /**
 * getCryptoMarket
 */
 export const getCryptoMarketAPI = () => {
     return axios.get('/api/v1/home/cryptocurrencies');
   };
+
+/**
+* getAssetInfo
+*/
+export const getAssetInfoAPI =() =>{
+    return axios.get('/api/v1/home/asset');
+}

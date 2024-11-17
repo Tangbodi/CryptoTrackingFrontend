@@ -116,8 +116,6 @@ const Wallet = () => {
             valueFormatter: (params) => `${params.value.toFixed(2)}%`
 
         }
-
-
     ];
 
     return (

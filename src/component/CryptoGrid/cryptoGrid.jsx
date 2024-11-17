@@ -11,7 +11,7 @@ const CryptoGrid = ({ cryptoData }) => {
     const paginationPageSizeSelector = [20];
     const [selectedSymbol, setSelectedSymbol] = useState("BTC");
     const [showPopup, setShowPopup] = useState(false);
-    const [index, setIndex] = useState(null);
+    const [index, setIndex] = useState(0);
     const handleTradeClick = (symbol) => {
         setSelectedSymbol(symbol);
         setShowPopup(true);

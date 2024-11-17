@@ -3,6 +3,7 @@ import Header from '../Header/header';
 import CoinMarket from '../CoinMarket/coinMarket';
 import TickerTap from '../TickerTape/tickerTape';
 import WalletVW from '../Wallet/walletVW';
+import Portfolio from '../../component/Portfolio/portfolio';
 function Home() {
   return (
     <>
@@ -10,8 +11,8 @@ function Home() {
         <Header />
       </header>
       <TickerTap />
+      <Portfolio/>
       <CoinMarket />
-      <WalletVW/>
     </>
   );
 }
