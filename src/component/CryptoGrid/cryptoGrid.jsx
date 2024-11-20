@@ -10,10 +10,12 @@ import QuoteStatistics from '../QuoteStatistics/quoteStatistics';
 const CryptoGrid = ({ cryptoData }) => {
     const paginationPageSizeSelector = [20];
     const [selectedSymbol, setSelectedSymbol] = useState("BTC");
+    const [selectedCryptoId, setSelectedCryptoId] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
     const [index, setIndex] = useState(0);
-    const handleTradeClick = (symbol) => {
+    const handleTradeClick = (symbol,id) => {
         setSelectedSymbol(symbol);
+        setSelectedCryptoId(id)
         setShowPopup(true);
     };
 
@@ -23,8 +25,9 @@ const CryptoGrid = ({ cryptoData }) => {
 
     const CustomButtonComponent = (props) => {
         const { symbol } = props.data;
+        const {id} = props.data;
         return (
-            <button onClick={() => handleTradeClick(symbol)} style={{ cursor: 'pointer' }}>
+            <button onClick={() => handleTradeClick(symbol,id)} style={{ cursor: 'pointer' }}>
                 Trade
             </button>
         );
@@ -112,7 +115,7 @@ const CryptoGrid = ({ cryptoData }) => {
                 <Chart symbol={selectedSymbol} />
                 <QuoteStatistics index={index} />
             </div>
-            {showPopup && <PlaceOrder symbol={selectedSymbol} onClose={closePopup} />}
+            {showPopup && <PlaceOrder symbol={selectedSymbol} id={selectedCryptoId} onClose={closePopup} />}
         </div>
     );
 };

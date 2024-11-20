@@ -30,3 +30,16 @@ export const getCryptoMarketAPI = () => {
 export const getAssetInfoAPI =() =>{
     return axios.get('/api/v1/home/asset');
 }
+
+/**
+* placeOrder
+*@param params userId
+*@param params cryptoId
+*@param params symbol
+*@param params quantity
+*@param params type
+*@param params price
+*/
+export const placeOrderAPI =(params)=>{
+    return axios.post('api/v1/users/place-order',params);
+}

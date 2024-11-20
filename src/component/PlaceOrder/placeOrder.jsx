@@ -1,14 +1,43 @@
 import React, { useState } from 'react';
 import './placeOrder.css'
-const PlaceOrder = ({ symbol, onClose }) => {
-    const [side, setSide] = useState("BUY");  // Default side is BUY
-    const [quantity, setQuantity] = useState(1);  // Default quantity
-    const [price, setPrice] = useState(0);  // Default price
+import { placeOrderAPI } from '../../request/api';
+
+const PlaceOrder = ({ symbol, id, onClose }) => {
+
+    const [side, setSide] = useState("BUY");
+    const [quantity, setQuantity] = useState(0);
+    const [price, setPrice] = useState(0);
 
     const handleOrderPlacement = () => {
-        console.log(`Order placed: ${side} ${quantity} of ${symbol} at ${price}`);
-        // Logic to place the order can go here
-        onClose(); // Close the popup after order placement
+        const cryptoId = id;
+        const userId = 123456;
+        const parsedQuantity = parseInt(quantity, 10); // Ensure quantity is an integer
+        const parsedPrice = parseFloat(price);
+        const params = {
+            userId,
+            cryptoId,
+            symbol,
+            quantity: parsedQuantity, // Ensure integer
+            type: side === 'BUY' ? 1 : 0, // Buy = 1, Sell = 0
+            price: parsedPrice,
+        };
+        console.log(`Order placed: ${side === 'BUY' ? 1 : 0} ${quantity} of ${symbol} at ${price} with id ${id} the user is ${userId}`);
+
+        placeOrderAPI(params)
+            .then((response) => {
+                console.log('Order response:', response.data);
+                onClose();
+            })
+            .catch((error) => {
+                if (error.response) {
+                    console.error('Backend returned an error:', error.response.data);
+                } else if (error.request) {
+                    console.error('No response from backend:', error.request);
+                } else {
+                    console.error('Error setting up request:', error.message);
+                }
+            });
+
     };
 
     return (
@@ -16,6 +45,7 @@ const PlaceOrder = ({ symbol, onClose }) => {
             <div className="popup-content">
                 <h2>Place Order</h2>
                 <div className="order-form">
+
                     <div className="form-group">
                         <label>Symbol:</label>
                         <span>{symbol}</span>
@@ -31,22 +61,22 @@ const PlaceOrder = ({ symbol, onClose }) => {
 
                     <div className="form-group">
                         <label>Quantity:</label>
-                        <input 
-                            type="number" 
-                            value={quantity} 
-                            min="1" 
-                            onChange={(e) => setQuantity(e.target.value)} 
+                        <input
+                            type="number"
+                            value={quantity}
+                            min="1"
+                            onChange={(e) => setQuantity(e.target.value)}
                         />
                     </div>
-  
+
                     <div className="form-group">
                         <label>Price:</label>
-                        <input 
-                            type="number" 
-                            value={price} 
-                            min="0" 
-                            step="0.01" 
-                            onChange={(e) => setPrice(e.target.value)} 
+                        <input
+                            type="number"
+                            value={price}
+                            min="0"
+                            step="0.01"
+                            onChange={(e) => setPrice(e.target.value)}
                         />
                     </div>
 
