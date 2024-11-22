@@ -1,127 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-import {formatMarketCap} from '../../utils/utils';
-
+import './wallet.css'
+import { getWalletInfoAPI } from '../../request/api';
 const Wallet = () => {
-    const data = [
-        {
-            name: "Bitcoin",
-            symbol:"BTC",
-            quantity: 100,
-            change: 0.81991846,
-            day_change:5.26172872,
-            market_cap: 1677564402090.3435,
-            total_change:1.23454678
-        },
-        {
-            name: "Bitcoin",
-            symbol:"BTC",
-            quantity: 100,
-            change: 0.81991846,
-            day_change:5.26172872,
-            market_cap: 1677564402090.3435,
-            total_change:1.23454678
-        },
-        {
-            name: "Bitcoin",
-            symbol:"BTC",
-            quantity: 100,
-            change: 0.81991846,
-            day_change:5.26172872,
-            market_cap: 1677564402090.3435,
-            total_change:1.23454678
-        },
-        {
-            name: "Bitcoin",
-            symbol:"BTC",
-            quantity: 100,
-            change: 0.81991846,
-            day_change:5.26172872,
-            market_cap: 1677564402090.3435,
-            total_change:1.23454678
-        },
-        {
-            name: "Bitcoin",
-            symbol:"BTC",
-            quantity: 100,
-            change: 0.81991846,
-            day_change:5.26172872,
-            market_cap: 1677564402090.3435,
-            total_change:1.23454678
-        },
-        {
-            name: "Bitcoin",
-            symbol:"BTC",
-            quantity: 100,
-            change: 0.81991846,
-            day_change:5.26172872,
-            market_cap: 1677564402090.3435,
-            total_change:1.23454678
-        },
-        {
-            name: "Bitcoin",
-            symbol:"BTC",
-            quantity: 100,
-            change: 0.81991846,
-            day_change:5.26172872,
-            market_cap: 1677564402090.3435,
-            total_change:1.23454678
-        },
-        {
-            name: "Bitcoin",
-            symbol:"BTC",
-            quantity: 100,
-            change: 0.81991846,
-            day_change:5.26172872,
-            market_cap: 1677564402090.3435,
-            total_change:1.23454678
-        },
-    ];
+    const [data, setData] = useState([]);
+    const userId = sessionStorage.getItem('user-id');
+  
+    const fetchWalletInfo = async () => {
+        try {
+            // Fetch wallet info from the API
+            const res = await getWalletInfoAPI({ userId: userId });
+            console.log("API Response:", res); // Log the entire API response
+
+            if (res.data.code === 200) {
+                console.log("Setting Data:", res.data.data);
+                setData(res.data.data); // Set the data to state
+                console.log(data)
+            } else {
+                console.error(`Error: ${res.message}`);
+            }
+        } catch (error) {
+            console.error('Failed to fetch wallet info:', error);
+        }
+    };
+
+    // UseEffect to run once after the component mounts
+    useEffect(() => {
+        fetchWalletInfo();
+    }, []); // Run this effect once, when the component mounts
+
+    // Log data whenever it changes
+    useEffect(() => {
+        console.log("Updated Data:", data); // This will log the updated data when `data` changes
+    }, [data]);
+
     const columnDefs = [
         {
-            headerName: "Name",
-            field: "name",
+            headerName: "Symbol",
+            field: "symbol",
             flex: 1,
         },
         {
-            headerName: "Quantity",
+            headerName: "QTY",
             field: "quantity",
             flex: 1,
         },
         {
-            headerName: "Change (%)",
-            field: "change",
+            headerName: "Avg Cost / Unit",
+            field: "avgCostPerUnit",  // Ensure this matches your data structure
             flex: 1,
-            valueFormatter: (params) => `${params.value.toFixed(2)}%`
         },
-        {
-            headerName: "Day Chg (%)",
-            field: "day_change",
-            flex: 1,
-            valueFormatter: (params) => `${params.value.toFixed(2)}%`
-
-        },
-        {
-            headerName: "Market Value",
-            field: "market_cap",
-            flex: 1,
-            valueFormatter: (params) => formatMarketCap(params.value)
-
-        },{
-            headerName: "Total Chg (%)",
-            field: "total_change",
-            flex: 1,
-            valueFormatter: (params) => `${params.value.toFixed(2)}%`
-
-        }
     ];
 
     return (
-        <div>
-            <div style={{ padding: "10px" }}>
-                <h1>My Portfolios</h1>
+        <div className='wallet'>
+            <div className='wallet-text'>
+                <h1>My Holdings</h1>
             </div>
             <div style={{ width: "100%", height: "100%" }} className="ag-theme-alpine-dark">
                 <AgGridReact
@@ -132,10 +68,6 @@ const Wallet = () => {
             </div>
         </div>
     );
-
 };
 
 export default Wallet;
-
-
-

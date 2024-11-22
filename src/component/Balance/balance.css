@@ -1,0 +1,14 @@
+
+.balance{
+    font-size: 15px;
+    font-weight: bold;
+    background-color:  #131722;
+    border-top-style: solid;
+    border-top-width: 0.8px;
+}
+.gain{
+    font-size:13px;
+}
+.balance-text{
+    color: white;
+}

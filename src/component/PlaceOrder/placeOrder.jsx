@@ -10,15 +10,15 @@ const PlaceOrder = ({ symbol, id, onClose }) => {
 
     const handleOrderPlacement = () => {
         const cryptoId = id;
-        const userId = 123456;
-        const parsedQuantity = parseInt(quantity, 10); // Ensure quantity is an integer
+        const userId = sessionStorage.getItem('user-id');
+        const parsedQuantity = parseInt(quantity, 10);
         const parsedPrice = parseFloat(price);
         const params = {
             userId,
             cryptoId,
             symbol,
-            quantity: parsedQuantity, // Ensure integer
-            type: side === 'BUY' ? 1 : 0, // Buy = 1, Sell = 0
+            quantity: parsedQuantity, 
+            type: side === 'BUY' ? 1 : 0, 
             price: parsedPrice,
         };
         console.log(`Order placed: ${side === 'BUY' ? 1 : 0} ${quantity} of ${symbol} at ${price} with id ${id} the user is ${userId}`);
