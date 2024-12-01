@@ -1,11 +1,11 @@
 import LoginOrRegister from "../../component/LoginOrRegister/loginOrRegister";
 
-function Login(){
-    return(
-        <>
-        <LoginOrRegister/>
-        </>
-    )
+function Login() {
+    return (
+        <div className="login-page">
+            <LoginOrRegister />
+        </div>
+    );
 }
 
 export default Login;
