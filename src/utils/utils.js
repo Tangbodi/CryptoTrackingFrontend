@@ -30,3 +30,11 @@ export const removeSessionStorage = () =>{
     sessionStorage.removeItem('user-id');
     sessionStorage.removeItem('user-name');
 }
+
+export function dayGainCalculation(preDayClosePrice,curDayClosePrice ){
+    return curDayClosePrice - preDayClosePrice;
+}
+
+export function totalGainCalculation(sellingPrice, purchasePrice){
+    return sellingPrice - purchasePrice;
+}

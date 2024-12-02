@@ -3,7 +3,7 @@ import './quoteStatistics.css';
 import { formatCurrency, formatMarketCap, formatVolume, formatSupply } from '../../utils/utils';
 
 const QuoteStatistics = ({ index }) => {
-  const [quoteData, setQuoteData] = useState(null);
+  const [quoteData, setQuoteData] = useState(0);
 
   useEffect(() => {
     const cachedData = localStorage.getItem('cryptoData');

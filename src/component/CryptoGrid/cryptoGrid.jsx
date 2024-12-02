@@ -5,15 +5,17 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 import { formatCurrency, formatMarketCap, formatVolume, formatSupply } from '../../utils/utils';
 import Chart from '../Chart/chart';
 import Wallet from '../Wallet/wallet';
-import Popup from '../Popup/popup';
+import PlaceOrder from '../PlaceOrder/placeOrder';
 import QuoteStatistics from '../QuoteStatistics/quoteStatistics';
 const CryptoGrid = ({ cryptoData }) => {
     const paginationPageSizeSelector = [20];
     const [selectedSymbol, setSelectedSymbol] = useState("BTC");
+    const [selectedCryptoId, setSelectedCryptoId] = useState(null);
     const [showPopup, setShowPopup] = useState(false);
-    const [index, setIndex] = useState(null);
-    const handleTradeClick = (symbol) => {
+    const [index, setIndex] = useState(0);
+    const handleTradeClick = (symbol,id) => {
         setSelectedSymbol(symbol);
+        setSelectedCryptoId(id)
         setShowPopup(true);
     };
 
@@ -23,8 +25,9 @@ const CryptoGrid = ({ cryptoData }) => {
 
     const CustomButtonComponent = (props) => {
         const { symbol } = props.data;
+        const {id} = props.data;
         return (
-            <button onClick={() => handleTradeClick(symbol)} style={{ cursor: 'pointer' }}>
+            <button onClick={() => handleTradeClick(symbol,id)} style={{ cursor: 'pointer' }}>
                 Trade
             </button>
         );
@@ -112,7 +115,7 @@ const CryptoGrid = ({ cryptoData }) => {
                 <Chart symbol={selectedSymbol} />
                 <QuoteStatistics index={index} />
             </div>
-            {showPopup && <Popup symbol={selectedSymbol} onClose={closePopup} />}
+            {showPopup && <PlaceOrder symbol={selectedSymbol} id={selectedCryptoId} onClose={closePopup} />}
         </div>
     );
 };

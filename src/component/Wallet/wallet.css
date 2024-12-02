@@ -1,0 +1,10 @@
+.wallet{
+    font-size: 15px;
+    font-weight: bold;
+    background-color:  #131722;
+    border-top-style: solid;
+    border-top-width: 0.8px;
+}
+.wallet-text{
+    color: white;
+}
