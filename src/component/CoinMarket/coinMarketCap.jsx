@@ -49,12 +49,13 @@ function CoinMarketCap() {
         ) : (
           <p>Loading data...</p>
         )}
-      
+
      </div>
   );
 }
 
 export default CoinMarketCap;
+
 
 
 
