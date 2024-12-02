@@ -16,27 +16,14 @@ const PlaceOrder = ({ symbol, price, onClose }) => {
         }
     };
 
-    // const handleBuy = () => {
-    //     console.log(`Buying ${quantity} of ${symbol} at $${price} each (Total: $${(quantity * price).toFixed(2)})`);
-    //     onClose(); // Close the panel after buying
-    // };
-    //
-    // const handleSell = () => {
-    //     console.log(`Selling ${quantity} of ${symbol} at $${price} each (Total: $${(quantity * price).toFixed(2)})`);
-    //     onClose(); // Close the panel after selling
-    // };
     const handleBuy = () => {
-        const total = (quantity * price).toFixed(2);
-        console.log(`Buying ${quantity} of ${symbol} at $${price} each (Total: $${total})`);
-        onClose();
-        onOrder({ type: "buy", symbol, quantity, price }); // Notify parent
+        console.log(`Buying ${quantity} of ${symbol} at $${price} each (Total: $${(quantity * price).toFixed(2)})`);
+        onClose(); // Close the panel after buying
     };
 
     const handleSell = () => {
-        const total = (quantity * price).toFixed(2);
-        console.log(`Selling ${quantity} of ${symbol} at $${price} each (Total: $${total})`);
-        onClose();
-        onOrder({ type: "sell", symbol, quantity, price }); // Notify parent
+        console.log(`Selling ${quantity} of ${symbol} at $${price} each (Total: $${(quantity * price).toFixed(2)})`);
+        onClose(); // Close the panel after selling
     };
 
 
