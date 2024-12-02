@@ -29,11 +29,43 @@ const Tape = () => {
           },
           {
             proName: 'CRYPTO:BNBUSD',
-            title: 'Binance Coin (BNB USD) Price'
+            title: 'BNB'
           },
           {
             proName: 'BITSTAMP:USDCUSD',
             title: 'USDC'
+          },
+          {
+            proName: 'CRYPTO:XRPUSD',
+            title: 'XRP'
+          },
+          {
+            proName: 'CRYPTO:DOGEUSD',
+            title: 'DOGE'
+          },
+          {
+            proName: 'CRYPTO:SOLUSD',
+            title: 'SOL'
+          },
+          {
+            proName: 'CRYPTO:ADAUSD',
+            title: 'ADA'
+          },
+          {
+            proName: 'CRYPTO:AVAXUSD',
+            title: 'AVAX'
+          },
+          {
+            proName: 'CRYPTO:SHIBUSD',
+            title: 'SHIB'
+          },
+          {
+            proName: 'CRYPTO:TRXUSD',
+            title: 'TRON'
+          },
+          {
+            proName: 'CRYPTO:XLMUSD',
+            title: 'XLM'
           },
         ],
         showSymbolLogo: true,

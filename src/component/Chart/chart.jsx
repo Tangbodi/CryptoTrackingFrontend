@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef,  useState } from 'react';
 
 const Chart = ({symbol}) => {
   const container = useRef();
+
   useEffect(() => {
     const loadChart = (currentSymbol) => {
       const script = document.createElement('script');
@@ -52,20 +53,13 @@ const Chart = ({symbol}) => {
       container.current.appendChild(script);
     };
 
-    if (container.current) {
-      const primarySymbol = `COINBASE:${symbol}USD|1D`;
-      loadChart(primarySymbol);
-
-      const checkLoadTimeout = setTimeout(() => {
-        const chartLoaded = container.current.querySelector('.tradingview-widget-container');
-        if (!chartLoaded) {
-          const fallbackSymbol = `CRYPTOCAP:${symbol}|1D`;
-          loadChart(fallbackSymbol);
-        }
-      }, 500);
-
-      return () => clearTimeout(checkLoadTimeout);
+    if(container.current.innerHTML === ''){
+      loadChart(`CRYPTOCAP:${symbol}USD|1D`);
+    }else {
+      loadChart(`BITSTAMP:${symbol}USD|1D`);
     }
+ 
+ 
   }, [symbol]);
 
   return(
